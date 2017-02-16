@@ -4,10 +4,17 @@
 
 class Controller {
 
-  public $cart_view = 'aside';
+  public $cart_view = 'empty';
 
   public function __construct() {
     $this->init_session();
+
+
+    if(!empty($_SESSION['cart'])) {
+      $this->cart_view = 'list';
+    } else {
+      $this->cart_view = 'empty';
+    }
 
     // Invoke methods based on post variables when instantiating the controller class
     if(isset($_POST['pizza_submit'])) {
@@ -17,6 +24,7 @@ class Controller {
     }
     if(isset($_POST['cart_clear'])) {
       $this->empty_cart();
+      $this->cart_view = 'empty';
     }
     if(isset($_POST['cart_buy'])) {
       $this->cart_view = 'thankyou';
@@ -24,7 +32,7 @@ class Controller {
       $this->init_session();
     }
     if(isset($_POST['cart_delete'])){
-      $this->remove_from_cart(0);
+      $this->remove_from_cart($_POST['cart_delete']);
       $this->update_total_price();
       $this->post_redirect_get();
     }
@@ -45,7 +53,7 @@ class Controller {
 
   public function post_redirect_get() {
     // Makes sure we don't re-post anything
-    header("Location: " . $_SERVER['REQUEST_URI']);
+    header("Location: ".$_SERVER['REQUEST_URI']);
     exit();
   }
 
@@ -99,8 +107,12 @@ class Controller {
     $view = new View();
 
     switch ($this->cart_view) {
-      case 'aside':
-        $view->render('views/cart_aside.php', $_SESSION['cart']);
+      case 'list':
+        $view->render('views/cart_list.php', $_SESSION['cart']);
+      break;
+
+      case 'empty':
+        $view->render('views/cart_empty.php', $_SESSION['cart']);
       break;
 
       case 'thankyou':

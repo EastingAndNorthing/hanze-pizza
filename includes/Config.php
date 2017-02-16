@@ -17,7 +17,7 @@ class Config {
   ];
 
   public static $pizza_bottoms = [
-    'Classic'  => 0.10,
+    'Classic'  => 0.00,
     'Luchtig'  => 0.50,
     'Kaasrand' => 0.80
   ];
