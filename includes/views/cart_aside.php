@@ -19,12 +19,11 @@ if(!empty($_SESSION['cart'])) {
   }
 
   $total_price_format = money_format('%.2n', $_SESSION['total_price']);
-  echo "<p>Totaal: &euro;$total_price_format</p>";
 
-  echo '<form action="" method="post">
-    <input type="submit" class="btn btn-red" name="cart_clear" value="Winkelwagentje legen">
-    <input type="submit" class="btn btn-green" name="cart_buy" value="Kopen">
-  </form>';
+  echo "<form action='' method='post'>
+    <input type='submit' class='btn btn-red' name='cart_clear' value='Winkelwagentje legen'>
+    <input type='submit' class='btn btn-green' name='cart_buy' value='Kopen (&euro;$total_price_format)'>
+  </form>";
 
 } else {
   echo '<h2>Uw winkelwagentje is leeg.</h2>';
