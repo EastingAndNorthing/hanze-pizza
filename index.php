@@ -1,8 +1,7 @@
 <?php
 /*
 Todo:
-- router (switch)
-- cart (while?)
+- while
 */
 
 // Enable debugging messages

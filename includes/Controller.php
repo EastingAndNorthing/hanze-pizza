@@ -19,6 +19,7 @@ class Controller {
     // Invoke methods based on post variables when instantiating the controller class
     if(isset($_POST['pizza_submit'])) {
       $this->add_to_cart();
+      $this->update_all_cart_items();
       $this->update_total_price();
       $this->post_redirect_get();
     }
@@ -33,6 +34,7 @@ class Controller {
     }
     if(isset($_POST['cart_delete'])){
       $this->remove_from_cart($_POST['cart_delete']);
+      $this->update_all_cart_items();
       $this->update_total_price();
       $this->post_redirect_get();
     }
@@ -87,6 +89,12 @@ class Controller {
 
   public function remove_from_cart($id){
     array_splice($_SESSION['cart'], $id, 1);
+  }
+
+  public function update_all_cart_items() {
+    foreach($_SESSION['cart'] as $cart_item) {
+      $cart_item->calculate_price();
+    }
   }
 
   public function update_total_price(){
