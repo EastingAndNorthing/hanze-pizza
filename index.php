@@ -1,8 +1,4 @@
 <?php
-/*
-Todo:
-- while
-*/
 
 // Enable debugging messages
 ini_set('display_errors', 1);
@@ -15,6 +11,7 @@ require_once(__DIR__.'/includes/Pizza.php');
 require_once(__DIR__.'/includes/Controller.php');
 require_once(__DIR__.'/includes/View.php');
 
+// Initialize the controller class
 $controller = new Controller;
 
 ?>
@@ -27,17 +24,17 @@ $controller = new Controller;
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="css/main.css">
 
-  <title>Pizza Meneer - Pizza bestellen</title>
+  <title>Domino's - Pizza bestellen</title>
   <meta name="author" content="Mark Oosting">
   <meta name="description" content="Bestel uw pizza's online">
-  <meta name="keywords" content="Pizza">
+  <meta name="keywords" content="Pizza, Domino's">
 </head>
 
 <body>
 
   <header>
     <div class="maxwidth">
-      <h1>Pizza Meneer</h1>
+      <h1><img src="img/logo.png" alt="Domino's">Domino's - Pizza bestellen</h1>
     </div>
   </header>
 
@@ -51,8 +48,10 @@ $controller = new Controller;
             <?php $controller->create_dropdown(Config::$pizza_sizes, 'pizza_size'); ?>
             <?php $controller->create_dropdown(Config::$pizza_bottoms, 'pizza_bottom'); ?>
             <?php $controller->create_dropdown(Config::$pizza_toppings, 'pizza_topping'); ?>
+            <br>
             <p>Hoeveelheid:</p>
             <input type="number" name="pizza_quantity" value="1" min="1" max="20" required>
+            <br>
             <input type="submit" class="btn btn-green" name="pizza_submit" value="Toevoegen">
           </form>
         </div>

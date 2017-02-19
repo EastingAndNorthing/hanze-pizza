@@ -18,7 +18,7 @@ class Pizza {
   }
 
   public function calculate_price() {
-    // Get corresponding prices from the config, based on assigned variables
+    // Get corresponding prices from the config, based our assigned variables
     $type_price = Config::$pizza_types[$this->type];
     $size_price = Config::$pizza_sizes[$this->size];
     $bottom_price = Config::$pizza_bottoms[$this->bottom];

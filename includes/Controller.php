@@ -49,8 +49,8 @@ class Controller {
   }
 
   public function end_session(){
-    $_SESSION = [];
-    session_destroy();
+    $_SESSION = []; // Unset all session variables
+    session_destroy(); // End the session
   }
 
   public function post_redirect_get() {
@@ -88,6 +88,7 @@ class Controller {
   }
 
   public function remove_from_cart($id){
+    // Remove a specific cart item by it's index/id
     array_splice($_SESSION['cart'], $id, 1);
   }
 

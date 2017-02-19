@@ -28,6 +28,10 @@ header
   background: #333
   color: $accent
   padding: 1em
+  img
+    height: 1.5em
+    vertical-align: middle
+    margin-right: 0.5em
 main
   padding: 1em 0
 
@@ -46,6 +50,7 @@ main
   position: relative
   display: inline-block
   padding: 0.5em 1.1em
+  margin-bottom: 0.5em
   font-size: 1em
   color: white
   background: $accent
@@ -75,10 +80,16 @@ main
   width: 60%
   select, input[type="number"]
     display: block
-    width: 50%
     font-size: 1em
     padding: 0.1em
     margin-bottom: 0.3em
+    background: white
+    border: 1px solid #bbb
+    border-radius: 0.14em
+  select
+    @media screen and (max-width: 480px)
+      width: 100%
+    width: 50%
 
 .shoppingcart
   @media screen and (max-width: 720px)
