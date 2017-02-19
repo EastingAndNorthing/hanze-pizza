@@ -93,9 +93,17 @@ class Controller {
   }
 
   public function update_all_cart_items() {
-    foreach($_SESSION['cart'] as $cart_item) {
-      $cart_item->calculate_price();
+    // While loops are required for this assignment:
+    $cart_size = count($_SESSION['cart']);
+    $i = 0;
+    while($i < $cart_size) {
+      $_SESSION['cart'][$i]->calculate_price();
+      $i++;
     }
+    // What I'd normally use:
+    // foreach($_SESSION['cart'] as $cart_item) {
+    //   $cart_item->calculate_price();
+    // }
   }
 
   public function update_total_price(){
